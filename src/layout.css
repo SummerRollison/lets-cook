@@ -2,9 +2,19 @@
   float: left;
 }
 
+.column {
+  width: 50%;
+  display: inline-block;
+}
+
 .row {
   overflow: auto;
   margin-bottom: 20px;
+}
+
+.col-1-2 {
+  width: 50%;
+  padding: 10px 5px;
 }
 
 .col-1-3 {
