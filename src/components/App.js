@@ -1,9 +1,12 @@
 import React from "react";
 import "../style.css";
+import "../layout.css";
 
+import Header from "./Header";
 import SearchBar from "./SearchBar";
 import QuickSearch from "./QuickSearch";
 import RecipeList from "./RecipeList";
+import Footer from "./Footer";
 
 class App extends React.Component {
   state = { recipes: [] };
@@ -21,6 +24,7 @@ class App extends React.Component {
           .map(filter => `${filterName}=${filter}`)
           .join("&");
       })
+      .filter(filter => filter !== "")
       .join("&");
   };
 
@@ -36,8 +40,7 @@ class App extends React.Component {
     };
 
     const queryString = this.formatParams(searchParams);
-    // const filtersQueryString = this.formatFilters(filters);
-    const filtersQueryString = "";
+    const filtersQueryString = this.formatFilters(filters);
     const url = path + queryString + "&" + filtersQueryString;
 
     fetch(url)
@@ -47,10 +50,20 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="ui container">
-        <SearchBar onSubmit={this.getRecipes} />
-        <QuickSearch onClick={this.getRecipes} />
-        <RecipeList recipes={this.state.recipes} />
+      <div>
+        <Header />
+        <div className="ui container">
+          <div className="row">
+            <div className="col-2-3">
+              <SearchBar onSubmit={this.getRecipes} />
+            </div>
+            <div className="col-1-3">
+              <QuickSearch onClick={this.getRecipes} />
+            </div>
+          </div>
+          <RecipeList recipes={this.state.recipes} />
+        </div>
+        <Footer />
       </div>
     );
   }
