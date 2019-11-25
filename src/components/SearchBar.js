@@ -4,21 +4,19 @@ class SearchBar extends React.Component {
   ingredientInput = React.createRef();
 
   inputs = {
-    health: {
+    Health: {
       vegan: React.createRef(),
       vegetarian: React.createRef()
     },
     cuisinetype: {},
     mealType: {},
-    diet: {
-      "low-fat": React.createRef()
-    }
+    diet: {}
   };
 
   formatFilterInputs = () => {
     const { inputs } = this;
     const filtersObject = {
-      health: [],
+      Health: [],
       cuisineType: [],
       mealType: [],
       dishType: [],
@@ -66,7 +64,7 @@ class SearchBar extends React.Component {
                   type="checkbox"
                   id="vegan"
                   value="vegan"
-                  ref={this.inputs.health.vegan}
+                  ref={this.inputs.Health.vegan}
                 />
                 <span className="checkbox-custom"></span>
               </label>
@@ -77,23 +75,12 @@ class SearchBar extends React.Component {
                 <input
                   type="checkbox"
                   id="vegetarian"
-                  ref={this.inputs.health.vegetarian}
+                  ref={this.inputs.Health.vegetarian}
                 />
                 <span className="checkbox-custom"></span>
               </label>
-              <label className="checkbox-label" htmlFor="vegan">
+              <label className="checkbox-label" htmlFor="vegetarian">
                 Vegetarian
-              </label>
-              <label className="checkbox-default">
-                <input
-                  type="checkbox"
-                  id="low-fat"
-                  ref={this.inputs.diet["low-fat"]}
-                />
-                <span className="checkbox-custom"></span>
-              </label>
-              <label className="checkbox-label" htmlFor="low-fat">
-                Low-Fat
               </label>
             </div>
             <button type="submit">Search</button>

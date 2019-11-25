@@ -3,6 +3,28 @@ import React from "react";
 const RecipeList = props => {
   console.log(props.recipes);
 
+  const renderCautionSpan = caution => {
+    return (
+      <span className="cautions" key={caution}>
+        {caution}
+      </span>
+    );
+  };
+
+  const renderCautionList = cautions => {
+    const cautionList = cautions.map(renderCautionSpan);
+    if (cautions.length > 0) {
+      return (
+        <div id="allergies">
+          <h4>Allergy Cautions</h4>
+          {cautionList}
+        </div>
+      );
+    } else {
+      return null;
+    }
+  };
+
   const recipes = props.recipes.map(({ recipe }) => (
     <div className="col-1-3" key={recipe.uri}>
       <div className="recipe-card">
@@ -14,14 +36,7 @@ const RecipeList = props => {
               {recipe.yield} Servings | Time: {recipe.totalTime} | Calories:{" "}
               {Math.round(recipe.calories)}
             </p>
-            <div id="allergies">
-              <h4>Allergy Cautions</h4>
-              {recipe.cautions.map((caution, index) => (
-                <span key={index} className="cautions">
-                  {caution}
-                </span>
-              ))}
-            </div>
+            {renderCautionList(recipe.cautions)}
           </div>
         </a>
       </div>

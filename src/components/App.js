@@ -57,7 +57,7 @@ class App extends React.Component {
             <div className="col-2-3">
               <SearchBar onSubmit={this.getRecipes} />
             </div>
-            <div className="col-1-3">
+            <div className="col-1-3 tablet">
               <QuickSearch onClick={this.getRecipes} />
             </div>
           </div>
