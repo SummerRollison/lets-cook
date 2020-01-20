@@ -1,7 +1,7 @@
 import React from "react";
 
 const RecipeList = props => {
-  console.log(props.recipes);
+  // console.log(props.recipes);
 
   const renderCautionSpan = caution => {
     return (
